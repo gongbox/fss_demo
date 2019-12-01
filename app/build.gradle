@@ -1,10 +1,9 @@
 apply plugin: 'com.android.application'
-//apply plugin: 'com.jakewharton.butterknife'
 
 android {
     signingConfigs {
         release {
-            storeFile file('F:\\AndroidStudioProjects\\fss\\key_store.jks')
+            storeFile file('../key_store.jks')
             storePassword '123456'
             keyAlias = 'key_fss'
             keyPassword '123456'
@@ -22,24 +21,20 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         javaCompileOptions {
             annotationProcessorOptions {
-                //NAVIGATE_PREFIX 路由方法前缀
-                //NAVIGATE_SUFFIX 路由方法后缀
-                //API_PREFIX 路由接口名常量前缀
-                //API_SUFFIX 路由接口名常量后缀
-                //GROUP_PREFIX 路由分组常量前缀
-                //GROUP_SUFFIX 路由分组常量后缀
-                //DEFAULT_GROUP 默认分组名
-//                arguments = [
-//                        NAVIGATE_PREFIX    : "navigateTo",
-//                        NAVIGATE_SUFFIX    : "",
-//                        BUILD_INTENT_PREFIX: "buildIntentFor",
-//                        BUILD_INTENT_SUFFIX: "",
-//                        API_PREFIX         : "I",
-//                        API_SUFFIX         : "RouteApi",
-//                        GROUP_PREFIX       : "",
-//                        GROUP_SUFFIX       : "",
-//                        DEFAULT_GROUP      : "default",
-//                ]
+                arguments = [
+                        MODULE_NAME: "app",           //模块名（重要，多模块时一定要填写）
+//                        NAVIGATE_PREFIX    : "navigateTo",    //路由方法前缀
+//                        NAVIGATE_SUFFIX    : "",              //路由方法后缀
+//                        BUILD_INTENT_PREFIX: "buildIntentFor",//构建Intent方法前缀
+//                        BUILD_INTENT_SUFFIX: "",              //构建Intent方法后缀
+//                        API_PREFIX         : "I",             //路由接口名常量前缀
+//                        API_SUFFIX         : "RouteApi",      //路由接口名常量后缀
+//                        GROUP_PREFIX       : "",              //路由分组常量前缀
+//                        GROUP_SUFFIX       : "",              //路由分组常量后缀
+//                        DEFAULT_GROUP      : "default",       //默认分组名
+//                        ROUTE_API_PREFIX   : "",              //接口前缀
+//                        ROUTE_API_SUFFIX   : "RouteApi",      //接口后缀
+                ]
             }
         }
     }
@@ -78,15 +73,11 @@ dependencies {
 
     implementation project(path: ":submoudle")
 
-    def fss_version = '+'
+    def fss_version = '1.0.33'
     implementation "com.github.gongbox.fss:adapter:$fss_version" //适配器
     implementation "com.github.gongbox.fss:bind:$fss_version"
     implementation "com.github.gongbox.fss:runpriority:$fss_version"
     implementation "com.github.gongbox.fss:base:$fss_version"
     implementation "com.github.gongbox.fss:router-api:$fss_version"
     annotationProcessor "com.github.gongbox.fss:router-compiler:$fss_version"
-
-    implementation 'com.jakewharton:butterknife:8.8.1'
-    annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
-
 }

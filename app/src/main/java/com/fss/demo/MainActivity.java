@@ -5,7 +5,7 @@ import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.ListView;
 
-import com.fss.router.FssRouteApi;
+import com.app.router.AppRouteApi;
 import com.fss.adapter.listview.CommonAdapter;
 import com.fss.base.BaseFssActivity;
 import com.fss.bind.annotation.BindActivity;
@@ -13,6 +13,7 @@ import com.fss.bind.annotation.BindView;
 import com.fss.demo.base.BaseActivity;
 import com.fss.router.annotation.Route;
 import com.fss.router.annotation.RouteExtra;
+import com.sub.router.SubRouteApi;
 
 import java.util.Arrays;
 import java.util.List;
@@ -32,7 +33,8 @@ public class MainActivity extends BaseActivity implements AdapterView.OnItemClic
             "RunPriorityTestActivity",
             "BindTestActivity",
             "RouteTestActivity",
-            "AdapterActivity"
+            "AdapterActivity",
+            "SubModuleActivity"
     );
 
     protected void initView() {
@@ -46,16 +48,19 @@ public class MainActivity extends BaseActivity implements AdapterView.OnItemClic
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         switch (position) {
             case 0:
-                FssRouteApi.DEFAULT.navigateToRunPriorityTestActivity(this);
+                AppRouteApi.DEFAULT.navigateToRunPriorityTestActivity(this);
                 break;
             case 1:
-                FssRouteApi.DEFAULT.navigateToBindTestActivity(this);
+                AppRouteApi.DEFAULT.navigateToBindTestActivity(this);
                 break;
             case 2:
-                FssRouteApi.DEFAULT.navigateToRouteMainActivity(this);
+                AppRouteApi.DEFAULT.navigateToRouteMainActivity(this);
                 break;
             case 3:
-                FssRouteApi.DEFAULT.navigateToAdapterActivity(this);
+                AppRouteApi.DEFAULT.navigateToAdapterActivity(this);
+                break;
+            case 4:
+                SubRouteApi.DEFAULT.navigateToMoudleTestActivity(this);
                 break;
             default:
                 throw new IllegalStateException("Unexpected value: " + position);

@@ -14,13 +14,24 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles 'consumer-rules.pro'
 
-//        javaCompileOptions {
-//            annotationProcessorOptions {
-//                arguments = [
-//                        ROUTE_PACKAGE: 'com.fss.demo.submoudle'
-//                ]
-//            }
-//        }
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [
+                        MODULE_NAME: "sub",           //模块名（重要，多模块时一定要填写）
+//                        NAVIGATE_PREFIX    : "navigateTo",    //路由方法前缀
+//                        NAVIGATE_SUFFIX    : "",              //路由方法后缀
+//                        BUILD_INTENT_PREFIX: "buildIntentFor",//构建Intent方法前缀
+//                        BUILD_INTENT_SUFFIX: "",              //构建Intent方法后缀
+//                        API_PREFIX         : "I",             //路由接口名常量前缀
+//                        API_SUFFIX         : "RouteApi",      //路由接口名常量后缀
+//                        GROUP_PREFIX       : "",              //路由分组常量前缀
+//                        GROUP_SUFFIX       : "",              //路由分组常量后缀
+//                        DEFAULT_GROUP      : "default",       //默认分组名
+//                        ROUTE_API_PREFIX   : "",              //接口前缀
+//                        ROUTE_API_SUFFIX   : "RouteApi",      //接口后缀
+                ]
+            }
+        }
     }
 
     buildTypes {
@@ -41,7 +52,7 @@ dependencies {
     androidTestImplementation 'androidx.test:runner:1.2.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 
-    def fss_version = '+'
+    def fss_version = '1.0.33'
     implementation "com.github.gongbox.fss:adapter:$fss_version" //适配器
     implementation "com.github.gongbox.fss:bind:$fss_version"
     implementation "com.github.gongbox.fss:runpriority:$fss_version"
